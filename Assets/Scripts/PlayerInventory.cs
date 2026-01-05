@@ -13,26 +13,24 @@ public class PlayerInventory : MonoBehaviour
     public AudioSource audioSource; // Le haut-parleur
     public AudioClip coinSound;     // Le fichier audio "coin"
 
-    private void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter(Collider other)
+{
+    Pickable pickable = other.GetComponent<Pickable>();
+    if (pickable == null) return;
+
+    if (other.CompareTag("Cookie"))
     {
-        Pickable pickable = other.GetComponent<Pickable>();
+        if (audioSource && coinSound)
+            audioSource.PlayOneShot(coinSound);
 
-        if (pickable != null)
-        {
+        cookieCount++;
+        onCookieCountChanged.Invoke(cookieCount);
 
-            if (audioSource != null && coinSound != null)
-            {
-                audioSource.PlayOneShot(coinSound);
-            }
-            cookieCount++;
-            onCookieCountChanged.Invoke(cookieCount);
-
-            pickable.PickUp();
-
-            if (cookieCount >= maxCookies)
-            {
-                onAllCookiesCollected.Invoke();
-            }
-        }
+        if (cookieCount >= maxCookies)
+            onAllCookiesCollected.Invoke();
     }
+
+    pickable.PickUp();
+}
+
 }

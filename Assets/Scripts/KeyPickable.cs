@@ -8,6 +8,6 @@ public class KeyPickable : Pickable
     public override void PickUp()
     {
         onKeyPicked.Invoke();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

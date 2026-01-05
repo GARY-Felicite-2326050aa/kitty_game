@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - player
+  - Key
+  - Cookie
   layers:
   - Default
   - TransparentFX

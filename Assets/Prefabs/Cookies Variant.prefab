@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1012311386055193492, guid: db66b66f761249347b45ef948710e295, type: 3}
+      propertyPath: m_TagString
+      value: Cookie
+      objectReference: {fileID: 0}
     - target: {fileID: 6862430762072407685, guid: db66b66f761249347b45ef948710e295, type: 3}
       propertyPath: m_Convex
       value: 1
