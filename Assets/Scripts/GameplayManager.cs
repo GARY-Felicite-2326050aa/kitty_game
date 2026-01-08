@@ -13,9 +13,9 @@ public class GameplayManager : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip winSound;
-    public AudioClip loseSound; // Optionnel : son de défaite
+    public AudioClip loseSound;
 
-    private int enemiesRemaining = 0; // Compteur manuel pour éviter les bugs de tag
+    private int enemiesRemaining = 0; 
     public GameObject cookieCounterObject;
     private void Start()
     {
@@ -42,7 +42,7 @@ public class GameplayManager : MonoBehaviour
 
     public void StartCombatPhase()
     {
-        // On initialise le compteur une seule fois au début du combat
+      
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesRemaining = enemies.Length;
 
@@ -54,11 +54,11 @@ public class GameplayManager : MonoBehaviour
 
     public void OnEnemyKilled()
     {
-        enemiesRemaining--; // On descend le compte manuellement
+        enemiesRemaining--; 
         
         if (enemiesRemaining <= 0)
         {
-            enemiesRemaining = 0; // Sécurité
+        
             WinGame();
         }
         else

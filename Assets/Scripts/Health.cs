@@ -4,7 +4,7 @@ public class Health : MonoBehaviour
 {
     public int maxHealth = 10;
     private int currentHealth;
-    private bool isDead = false; // Sécurité
+    private bool isDead = false; 
 
     public UnityEvent<int, int> onHealthChanged;
     public UnityEvent OnDeath;
@@ -17,14 +17,14 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isDead) return; // Si déjà mort, on ignore
+        if (isDead) return; 
 
         currentHealth -= damage;
         onHealthChanged.Invoke(currentHealth, maxHealth);
 
         if (currentHealth <= 0)
         {
-            isDead = true; // On marque comme mort
+            isDead = true; 
             Die();
         }
     }

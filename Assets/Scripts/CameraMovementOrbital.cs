@@ -38,40 +38,35 @@ using UnityEngine;
         {
             if (target == null) return;
 
-            // 1. Récupération des mouvements souris
             x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
             y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
             
-            // On bride l'angle Y : 5 évite de passer sous le sol, 80 évite de se retourner
-            y = Mathf.Clamp(y, yMinLimit, yMaxLimit);
+           
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-            // 2. Calcul de la direction et détection d'obstacle avec SphereCast
             Vector3 dir = rotation * new Vector3(0, 0, -distance);
             RaycastHit hit;
             float targetDistance = distance;
 
-            // On utilise SphereCast (une "boule") pour ne pas passer entre les hexagones
+          
             if (Physics.SphereCast(target.position, sphereRadius, dir.normalized, out hit, distance, collisionLayers))
             {
                 targetDistance = Mathf.Clamp(hit.distance - cushion, minDistance, distance);
             }
 
-            // 3. Lissage de la distance
             currentDistance = Mathf.Lerp(currentDistance, targetDistance, Time.deltaTime * smoothSpeed);
 
-            // 4. Calcul de la position finale
+        
             Vector3 finalPosition = (rotation * new Vector3(0, 0, -currentDistance)) + target.position;
 
-            // --- SÉCURITÉ SOL ULTIME ---
-            // Si malgré tout la caméra veut descendre plus bas que le chat, on la bloque
+           
             if (finalPosition.y < target.position.y + 0.1f)
             {
                 finalPosition.y = target.position.y + 0.1f;
             }
 
-            // 5. Application
+           
             transform.rotation = rotation;
             transform.position = finalPosition;
         }

@@ -30,7 +30,7 @@ using UnityEngine.Events;
 
         private void OnTriggerEnter(Collider other)
         {
-            // --- CAS 1 : C'EST UN COOKIE ---
+          
             if (other.CompareTag("Cookie"))
             {
                 // Son
@@ -52,12 +52,11 @@ using UnityEngine.Events;
                 return; 
             }
 
-            // --- CAS 2 : C'EST UN OBJET RAMASSABLE (Clé, etc.) ---
-            // On cherche si l'objet a un script qui hérite de "Pickable"
+         
             Pickable item = other.GetComponent<Pickable>();
             if (item != null)
             {
-                // On appelle la fonction PickUp() définie dans KeyPickable
+               
                 item.PickUp();
             }
         }

@@ -18,7 +18,7 @@ using System.Collections.Generic;
         {
             if (player == null) return;
 
-            // 1. On calcule la position moyenne théorique (Joueur + Ennemis)
+           
             Vector3 combinedPosition = player.position;
             int count = 1;
 
@@ -36,10 +36,10 @@ using System.Collections.Generic;
 
             Vector3 theoreticalCenter = combinedPosition / count;
 
-            // 2. CONTRAINTE : On empêche le pivot de trop s'éloigner du chat
+           
             Vector3 directionToCenter = theoreticalCenter - player.position;
             
-            // Si le milieu est trop loin, on le "bride" à maxShiftFromPlayer
+         
             if (directionToCenter.magnitude > maxShiftFromPlayer)
             {
                 directionToCenter = directionToCenter.normalized * maxShiftFromPlayer;
@@ -48,7 +48,7 @@ using System.Collections.Generic;
             Vector3 finalTargetPos = player.position + directionToCenter;
             finalTargetPos.y = player.position.y + heightOffset;
 
-            // 3. Application fluide
+        
             transform.position = Vector3.Lerp(transform.position, finalTargetPos, Time.deltaTime * lerpSpeed);
         }
 

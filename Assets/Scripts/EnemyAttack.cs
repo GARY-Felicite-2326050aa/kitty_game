@@ -10,7 +10,7 @@ using UnityEngine;
         
         private float m_NextAttackTime;
 
-        // On utilise OnTriggerStay pour que l'ennemi frappe dès qu'il touche le chat
+        
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
