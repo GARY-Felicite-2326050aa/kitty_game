@@ -7,16 +7,17 @@ TagManager:
   - player
   - Key
   - Cookie
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - player
+  - Player
   - Water
   - UI
   - Pickable
-  - 
-  - 
+  - Enemies
+  - Terrain
   - 
   - 
   - 
