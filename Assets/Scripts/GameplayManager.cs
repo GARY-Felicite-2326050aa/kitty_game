@@ -85,4 +85,15 @@ public class GameplayManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    public void ReplayGame()
+{
+    Time.timeScale = 1f; 
+    UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+}
+ public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quitter le jeu");
+    }
 }
